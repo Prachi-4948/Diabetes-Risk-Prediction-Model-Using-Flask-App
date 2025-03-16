@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diabetes Prediction</title>
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .container {
+            margin-top: 50px;
+            max-width: 500px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .btn-primary {
+            width: 100%;
+        }
+        .result {
+            margin-top: 20px;
+            font-weight: bold;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 class="text-center">Diabetes Prediction</h2>
+        <form action="/predict" method="post">
+            <div class="mb-3">
+                <label for="Age" class="form-label">Age</label>
+                <input type="number" step="any" class="form-control" id="Age" name="Age" required>
+            </div>
+            <div class="mb-3">
+                <label for="Glucose" class="form-label">Glucose Level</label>
+                <input type="number" step="any" class="form-control" id="Glucose" name="Glucose" required>
+            </div>
+            <div class="mb-3">
+                <label for="BMI" class="form-label">BMI</label>
+                <input type="number" step="any" class="form-control" id="BMI" name="BMI" required>
+            </div>
+            <div class="mb-3">
+                <label for="BloodPressure" class="form-label">Blood Pressure</label>
+                <input type="number" step="any" class="form-control" id="BloodPressure" name="BloodPressure" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Predict</button>
+        </form>
+        {% if prediction_text %}
+        <div class="result alert alert-info">{{ prediction_text }}</div>
+        {% endif %}
+    </div>
+</body>
+</html>
